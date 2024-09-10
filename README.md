@@ -1,2 +1,4 @@
 # VMG
-The corresponding code will be available soon!
+VMG: Rethinking U-Net architecture for Video Super-Resolution
+
+
