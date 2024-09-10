@@ -1,0 +1,94 @@
+# General settings
+name: VMG-REDS
+use_tb_logger: false #true
+model: VMG
+scale: 4
+gpu_ids: [0]
+if_train: false
+checkpoint_from: mine  # 'ST'
+
+# Dataset
+dataset:
+  # name: REDS  
+  name: REDS4 
+  # name: Vimeo90k_septuplet
+
+  mode: test  
+
+  dataset_root: /REDS/val/train_sharp_bicubic  # BI
+
+  num_frames: 50
+  image_shape: [3, 720, 1280]  # 720p
+  image_shape_r: [3, 256, 256]
+
+  num_out_frames: 100
+
+  use_hflip: true
+  use_vflip: true
+  use_rot: false
+  use_mirrors: false  
+  data_enhance: false 
+  eval_mid_clip: false  
+
+  selected_topk: 1  
+
+  overlapped_mode: mid  
+
+  FLOPs: false 
+  flops_num_frames: 16
+
+  wins: [128, 128]  
+  overlapped_spatial_length: 20  
+
+# Network structures
+network:
+  embed_dim: [144, 144, 144]
+  depths: [4, 4, 4]
+  num_heads: [4, 8, 4]
+  num_frames: 32  
+  mlp_ratio: 2
+  n_groups: 1
+  window_sizes: [[2,8,8], [4,8,8], [2,8,8]]
+  back_RBs: 0
+  spynet: 'https://download.openmmlab.com/mmediting/restorers/basicvsr/spynet_20210409-c6c1bd09.pth'
+  flow_fix: ~ 
+  # temporal
+  ltam: true
+  traj_win: [32, ~]  
+  traj_keyframes_n: [3, ~]  
+  traj_heads: [4, ~]
+  temporal_type: [false, ~]
+  temporal_empty: true
+  traj_res_n: [15, 0, 15]
+  deform_groups: [8, 16, 8]
+  max_res_scale: [1, 2, 1]
+  # spatial
+  spatial_type: [false, false]
+  use_mdsc: false
+  if_concat: false
+  flow_smooth: true
+  smooth_region_range: 4
+  ret_decay: true
+  non_linear: true
+  gating: true
+  if_symm: true
+  symm_act: 'tanh'
+  relu_scale: true
+  relu_scale_norm: false
+  ffn_type: 'ffn_cnn'
+  mixer_type: ['mlps', 'mlps']
+  mixer_n: [~, ~]
+  r_scaling: 0.1
+  chunk_ratios: [1/8, 1/4]
+  traj_mode: 'wins'
+  twins: [2, 2]
+  traj_scale: true
+  traj_refine: ~
+  m_scaling: 1.0
+  if_local_fuse: true
+  channel_mixer: 'rcab'
+
+path:
+  pretrain_model: ./experiments/VMG-REDS/models/latest.pth
+  strict_load: true 
+  output_dir: ./results_reds4

@@ -1,0 +1,113 @@
+# General settings
+name: VMG-REDS
+use_tb_logger: false #true
+model: VMG
+scale: 4
+gpu_ids: [0]
+if_train: true
+
+# Datasets
+dataset:
+  name: REDS
+  random_reverse: true #false
+  dataroot_HR: /REDS/train/reds_HR.lmdb
+  dataroot_LR: /REDS/train/reds_LR.lmdb
+  cache_keys: /REDS/train/REDS_keys.pkl
+
+  num_frames: 16  
+  use_shuffle: true
+  n_workers: 4  
+  batch_size: 4  
+  crop_size: 256
+  image_shape: [3, 720, 1280]
+  image_shape_r: [3, 256, 256]
+  # use_flip: true
+  use_hflip: true
+  use_vflip: true
+  use_rot: true
+  use_mirrors: false 
+  total_batch: 4
+  dataset_expand_ratio: 2
+  total_num_frames: 100
+  pre_seed: 0 
+
+# Network structures
+network:
+  embed_dim: [112, 224, 224, 448, 224, 224, 112]
+  depths: [4, 4, 2, 2, 2, 4, 4]
+  num_heads: [4, 8, 8, 16, 8, 8, 4]
+  num_frames: 16 
+  mlp_ratio: 6 
+  n_groups: 4
+  window_sizes: [[2,8,8], [4,8,8], [6,8,8], [8,8,8], [6,8,8], [4,8,8], [2,8,8]]
+  back_RBs: 0
+  spynet: 'https://download.openmmlab.com/mmediting/restorers/basicvsr/spynet_20210409-c6c1bd09.pth'
+  # spynet: ~
+  flow_fix: 5000
+  traj_win: [16, ~, ~, ~] 
+  traj_keyframes_n: [3, ~, ~, ~]
+  traj_heads: [4, ~, ~, ~]
+  temporal_type: [false, ~, ~, ~]
+  temporal_empty: true
+  traj_res_n: [15, 0, 0, 0, 0, 0, 15]
+  # spatial
+  spatial_type: [false, false, false, false]
+  use_mdsc: true
+  if_concat: false
+  flow_smooth: true
+  smooth_region_range: 4
+  ret_decay: true
+  non_linear: true
+  gating: true
+  if_symm: true
+  symm_act: 'tanh'
+  relu_scale: true
+  relu_scale_norm: false
+  ffn_type: 'ffn_cnn'
+  mixer_type: ['mlps', 'mlps', 'mlps', 'mlps']
+  mixer_n: [~, ~, ~, ~]
+  r_scaling: 0.1
+  chunk_ratios: [1/8, 1/4, 3/16, 1/8]
+  traj_mode: 'wins'
+  twins: [2, 2]
+  traj_scale: true
+  traj_refine: ~
+  m_scaling: 1.0
+
+path:
+  pretrain_model: ~
+  strict_load: true 
+  resume_state: ~ 
+
+# Training settings
+train:
+  lr: 0.0002  
+  lr_scheme: CosineAnnealingLR_Restart
+  beta1: 0.9
+  beta2: 0.99
+  niter: 400000  
+  warmup_iter: -1
+  T_period: [400000]
+  restarts: ~
+  restart_weights: [1]
+  eta_min: !!float 1e-7
+  reduced_iter: ~
+  val_freq: !!float 5e3
+  manual_seed: 0
+  amp: false
+  grad_acc: true 
+  if_grad_clip: false  
+  grad_clip_up: 0.5 
+  revise_epoch: true
+  pre_training: true
+  pre_lr_ratio: 0.125
+  weight_decay: ~  
+  f_u_params: false
+  eps: 1e-12
+  if_aux: true 
+  aux_ratio: 0.005
+
+# Logger
+logger:
+  print_freq: 1000  
+  save_checkpoint_freq: !!float 1e4
