@@ -3,10 +3,10 @@ VMG: Rethinking U-Net architecture for Video Super-Resolution
 
 ## Visualization results on the REDS4 dataset:
 <div align=center>
-<img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-000.gif" width="400" height="400"> <img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-011.gif" width="400" height="400" />
+<img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-000.gif" width="640" height="640"> <img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-011.gif" width="640" height="640" />
 </div>
 <div align=center>
-<img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-015.gif" width="400" height="400"> <img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-020.gif" width="400" height="400" />
+<img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-015.gif" width="640" height="640"> <img src="https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-020.gif" width="640" height="640" />
 </div>
 
 ## Qualitative comparison:
