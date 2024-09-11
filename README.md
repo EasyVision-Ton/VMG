@@ -1,7 +1,7 @@
 # VMG
 VMG: Rethinking U-Net architecture for Video Super-Resolution
 
-Qualitative comparison:
+## Qualitative comparison:
 ![image](https://github.com/EasyVision-Ton/VMG/blob/main/results/REDS4_000.png)
 ![image](https://github.com/EasyVision-Ton/VMG/blob/main/results/REDS4_011.png)
 ![image](https://github.com/EasyVision-Ton/VMG/blob/main/results/REDS4_015.png)
