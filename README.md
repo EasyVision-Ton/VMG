@@ -2,7 +2,8 @@
 VMG: Rethinking U-Net architecture for Video Super-Resolution
 
 ## Visualization results on the REDS4 dataset:
-![clip-000](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-000.gif) ![clip-011](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-011.gif)
+![clip-000](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-000.gif) 
+![clip-011](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-011.gif)
 ![clip-015](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-015.gif)
 ![clip-020](https://github.com/EasyVision-Ton/Visualization/blob/main/REDS4-020.gif)
 
