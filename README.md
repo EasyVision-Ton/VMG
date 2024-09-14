@@ -1,7 +1,7 @@
 # VMG
 This is the official PyTorch implement of the paper: VMG: Rethinking U-Net architecture for Video Super-Resolution
 
-`git clone https://github.com/EasyVision-Ton/VMG.git`
+```git clone https://github.com/EasyVision-Ton/VMG.git```
 
 ## Visualization results on the REDS4 dataset:
 <div align=center>
